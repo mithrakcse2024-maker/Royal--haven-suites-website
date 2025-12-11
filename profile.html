@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Royal Haven Suites - Profile</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        
+        header {
+            background-color: #1a2a6c;
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo {
+            width: 50px;
+            height: 50px;
+            margin-right: 15px;
+        }
+        
+        .brand-name {
+            font-size: 24px;
+            font-weight: 700;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            padding: 5px 10px;
+            border-radius: 3px;
+        }
+        
+        nav ul li a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        .profile-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 40px;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .profile-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #1a2a6c;
+            margin-right: 30px;
+        }
+        
+        .profile-info h2 {
+            font-size: 28px;
+            margin-bottom: 10px;
+            color: #1a2a6c;
+        }
+        
+        .profile-info p {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 5px;
+        }
+        
+        .profile-info p i {
+            margin-right: 10px;
+            color: #b21f1f;
+            width: 20px;
+        }
+        
+        .back-btn {
+            background-color: #1a2a6c;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .back-btn:hover {
+            background-color: #0f1a4d;
+        }
+        
+        .back-btn i {
+            margin-right: 8px;
+        }
+        
+        .profile-tabs {
+            display: flex;
+            margin-bottom: 20px;
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .tab {
+            flex: 1;
+            padding: 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
+        }
+        
+        .tab.active {
+            background-color: #1a2a6c;
+            color: white;
+        }
+        
+        .tab:hover:not(.active) {
+            background-color: #f0f0f0;
+        }
+        
+        .tab-content {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+        
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            border-color: #1a2a6c;
+            box-shadow: 0 0 0 2px rgba(26, 42, 108, 0.2);
+            outline: none;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .btn {
+            background-color: #1a2a6c;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            margin-right: 10px;
+        }
+        
+        .btn:hover {
+            background-color: #0f1a4d;
+        }
+        
+        .btn-secondary {
+            background-color: #6c757d;
+        }
+        
+        .btn-secondary:hover {
+            background-color: #5a6268;
+        }
+        
+        .btn-danger {
+            background-color: #b21f1f;
+        }
+        
+        .btn-danger:hover {
+            background-color: #8a1818;
+        }
+        
+        .payment-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .payment-method {
+            background-color: #f8f9fa;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .payment-method:hover {
+            border-color: #1a2a6c;
+            box-shadow: 0 3px 10px rgba(26, 42, 108, 0.1);
+        }
+        
+        .payment-method.selected {
+            border-color: #1a2a6c;
+            background-color: rgba(26, 42, 108, 0.1);
+        }
+        
+        .payment-method i {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #1a2a6c;
+        }
+        
+        .booking-history {
+            margin-top: 20px;
+        }
+        
+        .booking-item {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .booking-item:last-child {
+            border-bottom: none;
+        }
+        
+        .booking-image {
+            width: 80px;
+            height: 80px;
+            border-radius: 5px;
+            object-fit: cover;
+            margin-right: 20px;
+        }
+        
+        .booking-details {
+            flex: 1;
+        }
+        
+        .booking-details h4 {
+            margin-bottom: 5px;
+            color: #1a2a6c;
+        }
+        
+        .booking-details p {
+            margin-bottom: 3px;
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .booking-status {
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-align: center;
+        }
+        
+        .status-completed {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        
+        .status-upcoming {
+            background-color: #d1ecf1;
+            color: #0c5460;
+        }
+        
+        .status-cancelled {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        
+        footer {
+            background-color: #1a2a6c;
+            color: white;
+            padding: 40px 20px 20px;
+            margin-top: 50px;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 20px;
+            font-size: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-section h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: #b21f1f;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-section ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .footer-section ul li a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+        
+        .social-links {
+            display: flex;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            border-radius: 50%;
+            margin-right: 10px;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: #b21f1f;
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 14px;
+            color: #ccc;
+        }
+        
+        .notification {
+            position: fixed;
+            top: 80px;
+            right: 20px;
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transform: translateX(150%);
+            transition: transform 0.3s ease-out;
+            z-index: 1000;
+        }
+        
+        .notification.show {
+            transform: translateX(0);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="https://picsum.photos/seed/crownlogo/50/50.jpg" alt="Crown Logo" class="logo">
+            <h1 class="brand-name">The Royal Haven Suites</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="profile.html"><i class="fas fa-user"></i> Profile</a></li>
+                <li><a href="#" id="signOut"><i class="fas fa-sign-out-alt"></i> Sign Out</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <div class="container">
+        <button class="back-btn" onclick="history.back()">
+            <i class="fas fa-arrow-left"></i> Back
+        </button>
+        
+        <div class="profile-header">
+            <img src="https://picsum.photos/seed/userprofile/120/120.jpg" alt="Profile Picture" class="profile-avatar">
+            <div class="profile-info">
+                <h2>John Doe</h2>
+                <p><i class="fas fa-envelope"></i> toto@gmail.com</p>
+                <p><i class="fas fa-phone"></i> +91 9876543210</p>
+                <p><i class="fas fa-map-marker-alt"></i> 123, Anna Nagar, Chennai - 600040</p>
+                <p><i class="fas fa-calendar-alt"></i> Member since: January 2023</p>
+            </div>
+        </div>
+        
+        <div class="profile-tabs">
+            <div class="tab active" onclick="showTab('personal')">Personal Information</div>
+            <div class="tab" onclick="showTab('payment')">Payment Methods</div>
+            <div class="tab" onclick="showTab('bookings')">Booking History</div>
+            <div class="tab" onclick="showTab('contact')">Contact Us</div>
+        </div>
+        
+        <div class="tab-content" id="personal-tab">
+            <h3 style="margin-bottom: 20px; color: #1a2a6c;">Personal Information</h3>
+            <form id="personalForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="firstName">First Name</label>
+                        <input type="text" id="firstName" value="John" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">Last Name</label>
+                        <input type="text" id="lastName" value="Doe" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" value="toto@gmail.com" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Mobile Number</label>
+                    <input type="tel" id="phone" value="+91 9876543210" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="address">Address</label>
+                    <textarea id="address" rows="3">123, Anna Nagar, Chennai - 600040</textarea>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="city">City</label>
+                        <input type="text" id="city" value="Chennai" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="pincode">Pincode</label>
+                        <input type="text" id="pincode" value="600040" required>
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn">Save Changes</button>
+                <button type="button" class="btn btn-secondary" onclick="resetForm('personalForm')">Cancel</button>
+            </form>
+        </div>
+        
+        <div class="tab-content" id="payment-tab" style="display: none;">
+            <h3 style="margin-bottom: 20px; color: #1a2a6c;">Payment Methods</h3>
+            
+            <div class="payment-methods">
+                <div class="payment-method" onclick="selectPayment(this, 'mastercard')">
+                    <i class="fab fa-cc-mastercard"></i>
+                    <p>Mastercard</p>
+                </div>
+                <div class="payment-method" onclick="selectPayment(this, 'visa')">
+                    <i class="fab fa-cc-visa"></i>
+                    <p>VISA</p>
+                </div>
+                <div class="payment-method" onclick="selectPayment(this, 'axis')">
+                    <i class="fas fa-credit-card"></i>
+                    <p>Axis Bank</p>
+                </div>
+                <div class="payment-method" onclick="selectPayment(this, 'icici')">
+                    <i class="fas fa-credit-card"></i>
+                    <p>ICICI Bank</p>
+                </div>
+                <div class="payment-method" onclick="selectPayment(this, 'sbi')">
+                    <i class="fas fa-credit-card"></i>
+                    <p>SBI Card</p>
+                </div>
+                <div class="payment-method" onclick="selectPayment(this, 'indian')">
+                    <i class="fas fa-credit-card"></i>
+                    <p>Indian Bank</p>
+                </div>
+                <div class="payment-method" onclick="selectPayment(this, 'hdfc')">
+                    <i class="fas fa-credit-card"></i>
+                    <p>HDFC Bank</p>
+                </div>
+            </div>
+            
+            <form id="paymentForm">
+                <div class="form-group">
+                    <label for="cardHolder">Card Holder Name</label>
+                    <input type="text" id="cardHolder" placeholder="John Doe" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="cardNumber">Card Number</label>
+                    <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19" required>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="expiryDate">Expiry Date</label>
+                        <input type="text" id="expiryDate" placeholder="MM/YY" maxlength="5" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="cvv">CVV</label>
+                        <input type="text" id="cvv" placeholder="123" maxlength="3" required>
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn">Add Payment Method</button>
+                <button type="button" class="btn btn-secondary" onclick="resetForm('paymentForm')">Cancel</button>
+            </form>
+        </div>
+        
+        <div class="tab-content" id="bookings-tab" style="display: none;">
+            <h3 style="margin-bottom: 20px; color: #1a2a6c;">Booking History</h3>
+            
+            <div class="booking-history">
+                <div class="booking-item">
+                    <img src="https://picsum.photos/seed/booking1/80/80.jpg" alt="Hotel" class="booking-image">
+                    <div class="booking-details">
+                        <h4>S4 Residency Triplicane</h4>
+                        <p>Check-in: 15 Aug 2023 | Check-out: 17 Aug 2023</p>
+                        <p>Room: Deluxe Suite | Guests: 2 Adults</p>
+                        <p>Amount: ₹17,000</p>
+                    </div>
+                    <div class="booking-status status-completed">Completed</div>
+                </div>
+                
+                <div class="booking-item">
+                    <img src="https://picsum.photos/seed/booking2/80/80.jpg" alt="Hotel" class="booking-image">
+                    <div class="booking-details">
+                        <h4>Royal Suites Tambaram</h4>
+                        <p>Check-in: 25 Sep 2023 | Check-out: 27 Sep 2023</p>
+                        <p>Room: Executive Suite | Guests: 2 Adults, 1 Child</p>
+                        <p>Amount: ₹13,000</p>
+                    </div>
+                    <div class="booking-status status-upcoming">Upcoming</div>
+                </div>
+                
+                <div class="booking-item">
+                    <img src="https://picsum.photos/seed/booking3/80/80.jpg" alt="Hotel" class="booking-image">
+                    <div class="booking-details">
+                        <h4>Grand Chrompet</h4>
+                        <p>Check-in: 05 Jul 2023 | Check-out: 07 Jul 2023</p>
+                        <p>Room: Premium Suite | Guests: 2 Adults</p>
+                        <p>Amount: ₹12,000</p>
+                    </div>
+                    <div class="booking-status status-cancelled">Cancelled</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="tab-content" id="contact-tab" style="display: none;">
+            <h3 style="margin-bottom: 20px; color: #1a2a6c;">Contact Us</h3>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
+                <div>
+                    <h4 style="margin-bottom: 15px;">Get in Touch</h4
+                    p style="margin-bottom: 10px;"><i class="fas fa-map-marker-alt" style="color: #b21f1f; margin-right: 10px;"></i> 123, Anna Salai, Chennai - 600002</p>
+                    <p style="margin-bottom: 10px;"><i class="fas fa-phone" style="color: #b21f1f; margin-right: 10px;"></i> +91 9876543210</p>
+                    <p style="margin-bottom: 10px;"><i class="fas fa-envelope" style="color: #b21f1f; margin-right: 10px;"></i> info@royalhavensuites.com</p>
+                    
+                    <div style="margin-top: 20px;">
+                        <h4 style="margin-bottom: 15px;">Follow Us</h4>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 style="margin-bottom: 15px;">Send us a Message</h4>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" placeholder="How can we help you?" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" rows="5" placeholder="Type your message here..." required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        div class="footer-content">
+            <div class="footer-section">
+                <h3>About Us</h3>
+                <p>The Royal Haven Suites offers luxury accommodation in prime locations across Chennai. Experience the perfect blend of comfort, elegance, and world-class hospitality.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="profile.html">My Profile</a></li>
+                    <li><a href="#">Booking History</a></li>
+                    <li><a href="#">Special Offers</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Our Locations</h3>
+                <ul>
+                    <li><a href="#">Triplicane</a></li>
+                    <li><a href="#">Koyambedu</a></li>
+                    <li><a href="#">Tambaram</a></li>
+                    <li><a href="#">Pallavaram</a></li>
+                    <li><a href="#">Chrompet</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <ul>
+                    <li><i class="fas fa-map-marker-alt"></i> 123, Anna Salai, Chennai</li>
+                    <li><i class="fas fa-phone"></i> +91 9876543210</li>
+                    <li><i class="fas fa-envelope"></i> info@royalhavensuites.com</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2023 The Royal Haven Suites. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <div class="notification" id="notification">
+        <p id="notificationText">Changes saved successfully!</p>
+    </div>
+    
+    <script>
+        document.getElementById('signOut').addEventListener('click', function(e) {
+            e.preventDefault();
+            if (confirm('Are you sure you want to sign out?')) {
+                window.location.href = 'index.html';
+            }
+        });
+        
+        function showTab(tabName) {
+            // Hide all tabs
+            const tabs = document.querySelectorAll('.tab-content');
+            tabs.forEach(tab => {
+                tab.style.display = 'none';
+            });
+            
+            // Remove active class from all tab buttons
+            const tabButtons = document.querySelectorAll('.tab');
+            tabButtons.forEach(button => {
+                button.classList.remove('active');
+            });
+            
+            // Show selected tab
+            document.getElementById(tabName + '-tab').style.display = 'block';
+            
+            // Add active class to clicked tab button
+            event.target.classList.add('active');
+        }
+        
+        function selectPayment(element, cardType) {
+            // Remove selected class from all payment methods
+            const paymentMethods = document.querySelectorAll('.payment-method');
+            paymentMethods.forEach(method => {
+                method.classList.remove('selected');
+            });
+            
+            // Add selected class to clicked payment method
+            element.classList.add('selected');
+            
+            // Update card number format based on card type
+            const cardNumberInput = document.getElementById('cardNumber');
+            if (cardType === 'american-express') {
+                cardNumberInput.maxLength = 15;
+                cardNumberInput.placeholder = '1234 567890 12345';
+            } else {
+                cardNumberInput.maxLength = 19;
+                cardNumberInput.placeholder = '1234 5678 9012 3456';
+                }
+        }
+        
+        function resetForm(formId) {
+            document.getElementById(formId).reset();
+        }
+        
+        function showNotification(message) {
+            const notification = document.getElementById('notification');
+            const notificationText = document.getElementById('notificationText');
+            
+            notificationText.textContent = message;
+            notification.classList.add('show');
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+        }
+        
+        // Format card number input
+        document.getElementById('cardNumber').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\s/g, '');
+            let formattedValue = value.match(/.{1,4}/g)?.join(' ') || value;
+            e.target.value = formattedValue;
+        });
+        // form submissions
+        document.getElementById('personalForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            showNotification('Personal information updated successfully!');
+        });
+        
+        document.getElementById('paymentForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            showNotification('Payment method added successfully!');
+        });
+        
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            showNotification('Message sent successfully! We will get back to you soon.');
+        });
+    </script>
+</body>
+</html>
